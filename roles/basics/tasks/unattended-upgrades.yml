@@ -1,0 +1,47 @@
+---
+- name: install unattended-upgrades
+  apt:
+    name: unattended-upgrades
+
+- name: install update-notifier-common
+  apt:
+    name: update-notifier-common
+  when: ansible_distribution == "Ubuntu"
+
+- name: copy 10periodic
+  copy:
+    src: 10periodic
+    dest: /etc/apt/apt.conf.d/
+
+- name: template 50unattended-upgrades
+  template:
+    src: 50unattended-upgrades
+    dest: /etc/apt/apt.conf.d/
+
+- name: ensure apt-daily.timer override directory
+  file:
+    path: /etc/systemd/system/apt-daily.timer.d
+    state: directory
+
+- name: template apt-daily.timer override
+  template:
+    src: timer-override.conf
+    dest: /etc/systemd/system/apt-daily.timer.d/override.conf
+  vars:
+    on_calendar: "{{ basics_autoupdate_update_calendar }}"
+    randomized_delay: "{{ basics_autoupdate_update_delay }}"
+  notify: reload systemd
+
+- name: ensure apt-daily-upgrade.timer override directory
+  file:
+    path: /etc/systemd/system/apt-daily-upgrade.timer.d
+    state: directory
+
+- name: template apt-daily-upgrade.timer override
+  template:
+    src: timer-override.conf
+    dest: /etc/systemd/system/apt-daily-upgrade.timer.d/override.conf
+  vars:
+    on_calendar: "{{ basics_autoupdate_upgrade_calendar }}"
+    randomized_delay: "{{ basics_autoupdate_upgrade_delay }}"
+  notify: reload systemd

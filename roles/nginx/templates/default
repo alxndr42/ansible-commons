@@ -1,0 +1,38 @@
+server {
+    server_name default;
+{% if nginx_default_addresses is defined %}
+{% for addr in nginx_default_addresses %}
+    listen {{ addr }}:443 ssl http2 default_server;
+{% endfor %}
+{% else %}
+    listen 443 ssl http2 default_server;
+    listen [::]:443 ssl http2 default_server;
+{% endif %}
+    ssl_certificate /etc/ssl/default.crt;
+    ssl_certificate_key /etc/ssl/default.key;
+    ssl_stapling off;
+
+    root /var/www/html;
+    index index.html index.nginx-debian.html;
+}
+
+server {
+    server_name default;
+{% if nginx_default_addresses is defined %}
+{% for addr in nginx_default_addresses %}
+    listen {{ addr }}:80 default_server;
+{% endfor %}
+{% else %}
+    listen 80 default_server;
+    listen [::]:80 default_server;
+{% endif %}
+
+    location ^~ /.well-known/acme-challenge {
+        root {{ acme_webroot }};
+        access_log off;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}

@@ -1,0 +1,5 @@
+---
+nodejs_packages:
+  - build-essential
+  - git
+  - nodejs

@@ -1,0 +1,18 @@
+namespace: alxndr42
+name: commons
+version: 1.0.0
+authors: ["Alexander Dietrich"]
+readme: README.md
+description: Common Ansible roles for Debian-based servers.
+license: GPL-3.0-or-later
+tags:
+  - certbot
+  - debian
+  - nginx
+  - nodejs
+  - php
+  - ubuntu
+repository: https://github.com/alxndr42/ansible-commons
+build_ignore:
+  - .gitignore
+  - tmp

@@ -1,0 +1,67 @@
+---
+- name: install packages
+  apt:
+    name: "{{ nginx_packages }}"
+    cache_valid_time: 86400
+
+- name: template nginx.conf
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/
+    backup: yes
+  notify: reload nginx
+
+- name: copy nginx files
+  copy:
+    src: nginx/
+    dest: /etc/nginx/
+  notify: reload nginx
+
+- name: template default site
+  template:
+    src: default
+    dest: /etc/nginx/sites-available/
+  notify: reload nginx
+
+- name: enable default site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    src: /etc/nginx/sites-available/default
+    state: link
+  when: nginx_default_site
+  notify: reload nginx
+
+- name: disable default site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  when: not nginx_default_site
+  notify: reload nginx
+
+- name: copy nginx-site script
+  copy:
+    src: nginx-site
+    dest: /usr/local/sbin/
+    mode: 0750
+    owner: root
+    group: www-data
+
+- name: template openssl.cnf
+  template:
+    src: openssl.cnf
+    dest: /etc/ssl/
+    backup: yes
+  notify: restart nginx
+
+- name: generate default certificate
+  command: /usr/bin/openssl req -x509 -subj "/CN=default" -days 3650 -sha256 -out /etc/ssl/default.crt -newkey rsa:2048 -nodes -keyout /etc/ssl/default.key
+  args:
+    creates: /etc/ssl/default.crt
+
+- name: create ACME webroot
+  file:
+    path: "{{ acme_webroot }}"
+    state: directory
+    mode: 0750
+    owner: root
+    group: www-data

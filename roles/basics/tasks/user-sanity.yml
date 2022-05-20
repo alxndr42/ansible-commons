@@ -1,0 +1,29 @@
+---
+- name: remove vim-tiny
+  apt:
+    name: vim-tiny
+    state: absent
+    purge: yes
+
+- name: install user-friendly packages
+  apt:
+    name:
+      - htop
+      - less
+      - screen
+      - tree
+      - vim
+      - wget
+
+- name: check for /etc/screenrc
+  stat: path=/etc/screenrc
+  register: f
+
+- name: disable screen startup message
+  lineinfile:
+    dest: /etc/screenrc
+    regexp: '^#(startup_message off)$'
+    line: '\1'
+    backrefs: yes
+    backup: yes
+  when: f.stat.exists

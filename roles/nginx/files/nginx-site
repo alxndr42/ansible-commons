@@ -1,0 +1,63 @@
+#!/bin/bash -e
+
+AVAILABLE="/etc/nginx/sites-available"
+ENABLED="/etc/nginx/sites-enabled"
+
+if [ $# -lt 2 ]; then
+    echo "Usage:"
+    echo "  $(basename "$0") create <site_name> [server_name]"
+    echo "  $(basename "$0") enable <site_name>"
+    echo "  $(basename "$0") disable <site_name>"
+    exit 0
+fi
+
+COMMAND="$1"
+SITE="$2"
+
+case "$1" in
+    create )
+        if [ -f "$AVAILABLE/$SITE" ]; then
+            echo "$AVAILABLE/$SITE already exists."
+            exit 1
+        fi
+        if [ $# -gt 2 ]; then
+            SERVER_NAME=$3
+        else
+            SERVER_NAME=$2
+        fi
+        sed -e "s/SERVER_NAME/$SERVER_NAME/" $AVAILABLE/template > "$AVAILABLE/$SITE"
+        echo "$AVAILABLE/$SITE created. Don't forget to enable!"
+        ;;
+    enable )
+        if [ ! -f "$AVAILABLE/$SITE" ]; then
+            echo "$AVAILABLE/$SITE doesn't exist."
+            exit 1
+        fi
+        if [ -f "$ENABLED/$SITE" ]; then
+            echo "$SITE is already enabled."
+            exit 0
+        fi
+        ln -s "$AVAILABLE/$SITE" $ENABLED
+        if nginx -t; then
+            systemctl reload nginx
+            echo "$SITE is enabled."
+        else
+            rm "$ENABLED/$SITE"
+            echo "$SITE is not enabled."
+            exit 1
+        fi
+        ;;
+    disable )
+        if [ ! -f "$ENABLED/$SITE" ]; then
+            echo "$SITE is not enabled."
+            exit 0
+        fi
+        rm "$ENABLED/$SITE"
+        systemctl reload nginx
+        echo "$SITE is disabled."
+        ;;
+    * )
+        echo "Unsupported command: $COMMAND"
+        exit 1
+        ;;
+esac

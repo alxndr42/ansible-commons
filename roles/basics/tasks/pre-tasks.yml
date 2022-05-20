@@ -1,0 +1,26 @@
+---
+- name: use ansible_lsb distribution
+  set_fact:
+    distribution: "{{ ansible_lsb.id }}"
+  when: ansible_lsb.id is defined
+
+- name: use ansible_facts distribution
+  set_fact:
+    distribution: "{{ ansible_facts['distribution'] }}"
+  when: ansible_lsb.id is not defined
+
+- name: show distribution
+  debug: var=distribution
+
+- name: include OS-dependent variables
+  include_vars:
+    file: os_{{ distribution }}.yml
+
+- name: install requirements for some Ansible operations
+  apt:
+    name:
+      - curl
+      - git
+      - gpg
+      - unzip
+    cache_valid_time: 86400

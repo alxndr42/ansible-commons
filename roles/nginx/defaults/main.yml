@@ -1,0 +1,12 @@
+---
+nginx: true
+nginx_access_log: "off"
+nginx_ciphers: "ECDH+aRSA+CHACHA20:ECDH+aRSA+AESGCM"
+nginx_curves: "X25519:secp521r1:secp384r1"
+nginx_default_site: true
+nginx_error_log: "/var/log/nginx/error.log error"
+nginx_packages: [nginx]
+nginx_worker_connections: 1024
+nginx_worker_processes: auto
+acme_webroot: /var/www/acme-challenge
+openssl_ciphersuites: "TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256"

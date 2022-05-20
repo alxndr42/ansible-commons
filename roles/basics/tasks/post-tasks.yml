@@ -1,0 +1,29 @@
+---
+- name: disable selected services
+  service:
+    name: "{{ item }}"
+    state: stopped
+    enabled: no
+  with_items: "{{ basics_services_disable }}"
+
+- name: remove selected packages
+  apt:
+    name: "{{ basics_packages_remove }}"
+    state: absent
+    autoremove: yes
+    purge: yes
+
+- name: install selected packages
+  apt:
+    name: "{{ basics_packages_install }}"
+
+- name: install CPU microcode updates
+  apt:
+    name: "{{ item.package }}"
+  when:
+    - basics_microcode_updates | bool
+    - ansible_processor[1] == item.vendor
+    - ansible_architecture == item.arch
+  with_items:
+    - { "vendor": "AuthenticAMD", "arch": "x86_64", "package": "amd64-microcode" }
+    - { "vendor": "GenuineIntel", "arch": "x86_64", "package": "intel-microcode" }

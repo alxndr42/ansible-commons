@@ -1,0 +1,5 @@
+---
+certbot: true
+certbot_packages: [certbot]
+certbot_rsa_key_size: 4096
+acme_webroot: /var/www/acme-challenge

@@ -1,0 +1,10 @@
+---
+- include_tasks: pre-tasks.yml
+- include_tasks: ufw.yml
+  tags: ufw
+  when: basics_ufw
+- include_tasks: data-retention.yml
+- include_tasks: secure-secure-shell.yml
+- include_tasks: unattended-upgrades.yml
+- include_tasks: user-sanity.yml
+- include_tasks: post-tasks.yml

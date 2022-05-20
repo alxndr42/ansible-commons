@@ -1,0 +1,15 @@
+---
+- name: add NodeSource signing key
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    id: 9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280
+
+- name: add NodeSource repository
+  apt_repository:
+    repo: "deb https://deb.nodesource.com/{{ nodejs_version }} {{ ansible_lsb.codename }} main"
+    filename: nodesource
+
+- name: install packages
+  apt:
+    name: "{{ nodejs_packages }}"
+    cache_valid_time: 86400

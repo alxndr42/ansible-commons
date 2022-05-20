@@ -1,0 +1,27 @@
+---
+basics: true
+basics_autoupdate_blacklist: []
+basics_autoupdate_mail: ""
+basics_autoupdate_non_security: false
+basics_autoupdate_origins: []
+basics_autoupdate_reboot: true
+basics_autoupdate_update_calendar: "*-*-* 4:00"
+basics_autoupdate_update_delay: "45m"
+basics_autoupdate_upgrade_calendar: "*-*-* 5:00"
+basics_autoupdate_upgrade_delay: "45m"
+basics_history_disabled: true
+basics_journald_maxfile: "1day"
+basics_journald_maxretention: "30day"
+basics_journald_storage: "auto"
+basics_microcode_updates: true
+basics_packages_install: []
+basics_packages_remove: []
+basics_services_disable: []
+basics_ssh_listen: []
+basics_ssh_match_blocks: []
+basics_ssh_port: 22
+basics_ssh_root_login: "no"
+basics_ufw: false
+basics_ufw_allow: []
+basics_ufw_deny: []
+basics_ufw_ssh: true

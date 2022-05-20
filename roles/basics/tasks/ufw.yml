@@ -1,0 +1,39 @@
+---
+- name: install UFW
+  apt:
+    name: ufw
+
+- name: allow SSH
+  ufw:
+    rule: allow
+    port: "22"
+    proto: tcp
+  when: basics_ufw_ssh
+
+- name: deny rules
+  ufw:
+    rule: deny
+    from_ip: "{{ item.src|default('any') }}"
+    from_port: "{{ item.src_port|default(omit) }}"
+    to_ip: "{{ item.dst|default('any') }}"
+    to_port: "{{ item.port|default(omit) }}"
+    proto: "{{ item.proto|default('any') }}"
+    interface: "{{ item.interface|default(omit) }}"
+    direction: "{{ item.direction|default(omit) }}"
+  with_items: "{{ basics_ufw_deny }}"
+
+- name: allow rules
+  ufw:
+    rule: allow
+    from_ip: "{{ item.src|default('any') }}"
+    from_port: "{{ item.src_port|default(omit) }}"
+    to_ip: "{{ item.dst|default('any') }}"
+    to_port: "{{ item.port|default(omit) }}"
+    proto: "{{ item.proto|default('any') }}"
+    interface: "{{ item.interface|default(omit) }}"
+    direction: "{{ item.direction|default(omit) }}"
+  with_items: "{{ basics_ufw_allow }}"
+
+- name: enable UFW
+  ufw:
+    state: enabled

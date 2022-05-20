@@ -1,0 +1,19 @@
+---
+- name: install PHP FPM
+  apt:
+    name: php{{ php_version }}-fpm
+    cache_valid_time: 86400
+
+- name: install PHP modules
+  apt:
+    name: php{{ php_version }}-{{ item }}
+  with_items: "{{ php_modules }}"
+
+- name: populate service facts
+  service_facts:
+
+- name: template nginx snippet
+  template:
+    src: php-fpm.conf
+    dest: /etc/nginx/snippets/
+  when: "'nginx' in services"

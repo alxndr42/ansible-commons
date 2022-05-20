@@ -1,0 +1,5 @@
+---
+default_origins: []
+default_origins_security:
+  - o=Raspberry Pi Foundation,n=${distro_codename}
+  - o=Raspbian,n=${distro_codename}
