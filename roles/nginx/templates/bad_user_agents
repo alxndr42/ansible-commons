@@ -1,0 +1,6 @@
+map $http_user_agent $bad_user_agent {
+    default 0;
+{%for agent in nginx_bad_user_agents %}
+    "{{agent}}" 1;
+{% endfor %}
+}

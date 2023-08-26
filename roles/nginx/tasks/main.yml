@@ -11,6 +11,13 @@
     backup: yes
   notify: reload nginx
 
+- name: template bad_user_agents
+  template:
+    src: bad_user_agents
+    dest: /etc/nginx/
+    backup: yes
+  notify: reload nginx
+
 - name: copy nginx files
   copy:
     src: nginx/

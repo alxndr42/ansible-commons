@@ -7,6 +7,7 @@ server {
 #    ssl_certificate /etc/letsencrypt/live/SERVER_NAME/fullchain.pem;
 #    ssl_certificate_key /etc/letsencrypt/live/SERVER_NAME/privkey.pem;
 
+#    include snippets/bad-user-agent.conf;
 #    include snippets/header-hsts.conf;
 #    include snippets/header-security.conf;
 

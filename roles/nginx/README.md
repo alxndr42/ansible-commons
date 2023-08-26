@@ -10,6 +10,7 @@ using the included [template](files/nginx/sites-available/template).
 | Variable | Description |
 | --- | --- |
 | `nginx_access_log` | `access_log` value for *nginx.conf*. |
+| `nginx_bad_user_agents` | List of `User-Agent` [map patterns][] to block. |
 | `nginx_ciphers` | `ssl_ciphers` value for *nginx.conf*. |
 | `nginx_curves` | `ssl_ecdh_curve` value for *nginx.conf*. |
 | `nginx_default_site` | Configure/remove the `default` site (with ACME webroot). |
@@ -21,3 +22,5 @@ using the included [template](files/nginx/sites-available/template).
 | `openssl_ciphersuites` | `Ciphersuites` value for *openssl.cnf*. |
 
 Please see [defaults/main.yml](defaults/main.yml) for default values.
+
+[map patterns]: https://nginx.org/en/docs/http/ngx_http_map_module.html#map
