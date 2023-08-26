@@ -1,6 +1,6 @@
 namespace: alxndr42
 name: commons
-version: 1.0.0
+version: 1.0.1
 authors: ["Alexander Dietrich"]
 readme: README.md
 description: Common Ansible roles for Debian-based servers.
