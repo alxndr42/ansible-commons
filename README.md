@@ -38,7 +38,7 @@ Required variables:
 
 | Variable | Description |
 | --- | --- |
-| `nodejs_version` | NodeJS [repository](https://github.com/nodesource/distributions#manual-installation) version. |
+| `nodejs_version` | NodeJS [repository](https://github.com/nodesource/distributions#installation-instructions) version. |
 
 Please see [roles/nodejs/README.md](roles/nodejs/README.md) for details.
 
