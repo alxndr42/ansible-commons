@@ -15,7 +15,14 @@
   template:
     src: bad_user_agents
     dest: /etc/nginx/
-    backup: yes
+  when: nginx_bad_user_agents
+  notify: reload nginx
+
+- name: remove bad_user_agents
+  file:
+    path: /etc/nginx/bad_user_agents
+    state: absent
+  when: not nginx_bad_user_agents
   notify: reload nginx
 
 - name: copy nginx files
