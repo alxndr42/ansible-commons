@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
+- nginx: Remove `bad_user_agents` if empty
+
 ## 1.1.0
 
 - nodejs: Update NodeSource signing key handling
