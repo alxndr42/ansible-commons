@@ -5,6 +5,8 @@ Installs [nginx](https://nginx.org/docs/).
 The script [`nginx-site`](files/nginx-site) creates, enables and disables sites
 using the included [template](files/nginx/sites-available/template).
 
+In the interest of user privacy, logging is disabled by default.
+
 ## Variables
 
 | Variable | Description |
