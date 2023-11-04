@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0
+
+- nginx: Update header-security.conf
+- nginx: Add header-proxy.conf
+
 ## 1.1.1
 
 - nginx: Remove `bad_user_agents` if empty
