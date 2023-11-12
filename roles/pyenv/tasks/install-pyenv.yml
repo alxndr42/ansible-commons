@@ -1,0 +1,38 @@
+---
+- name: create user
+  ansible.builtin.user:
+    name: "{{ username }}"
+    state: present
+  when: pyenv_users_create
+
+- name: get user information
+  ansible.builtin.getent:
+    database: passwd
+    key: "{{ username }}"
+
+- name: check out pyenv
+  ansible.builtin.git:
+    repo: https://github.com/pyenv/pyenv.git
+    dest: "{{ ansible_facts.getent_passwd[username][4] }}/.pyenv"
+    version: "{{ pyenv_version }}"
+    accept_hostkey: yes
+  become: yes
+  become_user: "{{ username }}"
+  vars:
+    ansible_ssh_pipelining: yes
+
+- name: check for .bashrc
+  ansible.builtin.stat:
+    path: "{{ ansible_facts.getent_passwd[username][4] }}/.bashrc"
+  register: bashrc
+
+- name: enable pyenv in .bashrc
+  ansible.builtin.blockinfile:
+    path: "{{ ansible_facts.getent_passwd[username][4] }}/.bashrc"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK (pyenv)"
+    block: |
+      # https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
+      export PYENV_ROOT="$HOME/.pyenv"
+      command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+      eval "$(pyenv init -)"
+  when: bashrc.stat.exists

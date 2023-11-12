@@ -1,0 +1,11 @@
+---
+- name: install required system packages
+  ansible.builtin.apt:
+    name: "{{ pyenv_packages }}"
+    cache_valid_time: 86400
+
+- name: install pyenv
+  include_tasks: install-pyenv.yml
+  loop: "{{ pyenv_users }}"
+  loop_control:
+    loop_var: username

@@ -1,0 +1,21 @@
+---
+pyenv: true
+pyenv_packages: # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+  - build-essential
+  - curl
+  - git
+  - libbz2-dev
+  - libffi-dev
+  - liblzma-dev
+  - libncursesw5-dev
+  - libreadline-dev
+  - libsqlite3-dev
+  - libssl-dev
+  - libxml2-dev
+  - libxmlsec1-dev
+  - tk-dev
+  - xz-utils
+  - zlib1g-dev
+pyenv_users: []
+pyenv_users_create: true
+pyenv_version: v2.3.32 # https://github.com/pyenv/pyenv/releases
