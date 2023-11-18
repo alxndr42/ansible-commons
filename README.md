@@ -54,6 +54,12 @@ Required variables:
 
 Please see [roles/php/README.md](roles/php/README.md) for details.
 
+## pyenv
+
+Installs [pyenv](https://github.com/pyenv/pyenv).
+
+Please see [roles/pyenv/README.md](roles/pyenv/README.md) for details.
+
 ## License
 
 GNU General Public License v3 or later (GPLv3+)
