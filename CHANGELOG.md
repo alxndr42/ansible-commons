@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+- Add pyenv role
+
 ## 1.2.0
 
 - nginx: Update header-security.conf

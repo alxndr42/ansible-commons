@@ -1,6 +1,6 @@
 namespace: alxndr42
 name: commons
-version: 1.2.0
+version: 1.3.0
 authors: ["Alexander Dietrich"]
 readme: README.md
 description: Common Ansible roles for Debian-based servers.
@@ -11,8 +11,9 @@ tags:
   - nginx
   - nodejs
   - php
+  - python
   - ubuntu
-repository: https://github.com/alxndr42/ansible-commons
+repository: https://codeberg.org/alxndr42/ansible-commons
 build_ignore:
   - .gitignore
   - tmp
