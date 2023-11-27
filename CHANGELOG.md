@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.0
+
+- Add golang role
+- Update to pyenv v2.3.33
+
 ## 1.3.0
 
 - Add pyenv role
