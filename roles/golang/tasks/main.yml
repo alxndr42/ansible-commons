@@ -1,0 +1,21 @@
+---
+- name: remove system package
+  ansible.builtin.apt:
+    name: golang-go
+    state: absent
+    autoremove: true
+    purge: true
+
+- name: check installed version
+  ansible.builtin.shell: if [ -f {{ golang_path }}/VERSION ]; then grep -m1 ^go {{ golang_path }}/VERSION; else echo 0; fi
+  register: version
+  check_mode: false
+  changed_when: false
+
+- include_tasks: install.yml
+  when: version.stdout != golang_version
+
+- name: template profile snippet
+  ansible.builtin.template:
+    src: 99-golang-path.sh
+    dest: /etc/profile.d/

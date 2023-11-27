@@ -24,6 +24,14 @@ Required variables:
 
 Please see [roles/certbot/README.md](roles/certbot/README.md) for details.
 
+## golang
+
+Installs [Go][] for system-wide use.
+
+[go]: https://go.dev/
+
+Please see [roles/golang/README.md](roles/golang/README.md) for details.
+
 ## nginx
 
 Installs [nginx](https://nginx.org/docs/).
