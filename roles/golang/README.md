@@ -1,8 +1,6 @@
 # golang
 
-Installs [Go][] for system-wide use.
-
-[go]: https://go.dev/
+Installs [Go](https://go.dev/) for system-wide use.
 
 ## Variables
 

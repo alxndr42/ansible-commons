@@ -1,6 +1,6 @@
 # Ansible Collection - alxndr42.commons
 
-Common Ansible roles for Debian-based servers.
+Basic infrastructure for Debian-based servers.
 
 ## basics
 
@@ -26,9 +26,7 @@ Please see [roles/certbot/README.md](roles/certbot/README.md) for details.
 
 ## golang
 
-Installs [Go][] for system-wide use.
-
-[go]: https://go.dev/
+Installs [Go](https://go.dev/) for system-wide use.
 
 Please see [roles/golang/README.md](roles/golang/README.md) for details.
 
