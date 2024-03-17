@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.0
+
+- certbot: Add certbot_domains variable
+- Update to Go v1.21.8
+- Update to pyenv v2.3.36
+
 ## 1.4.0
 
 - Add golang role
