@@ -1,0 +1,12 @@
+---
+- name: register TLS certificate
+  ansible.builtin.command: certbot certonly -d {{ item }}
+  args:
+    creates: /etc/letsencrypt/live/{{ item }}/cert.pem
+  when: item is string
+
+- name: register TLS certificate
+  ansible.builtin.command: certbot certonly -d {{ item | join(',') }}
+  args:
+    creates: /etc/letsencrypt/live/{{ item[0] }}/cert.pem
+  when: item is not string

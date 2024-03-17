@@ -1,16 +1,16 @@
 ---
 - name: install packages
-  apt:
+  ansible.builtin.apt:
     name: "{{ certbot_packages }}"
     cache_valid_time: 86400
 
 - name: template cli.ini
-  template:
+  ansible.builtin.template:
     src: cli.ini
     dest: /etc/letsencrypt/
 
 - name: create ACME webroot
-  file:
+  ansible.builtin.file:
     path: "{{ acme_webroot }}"
     state: directory
     mode: 0750
@@ -18,17 +18,21 @@
     group: www-data
 
 - name: populate service facts
-  service_facts:
+  ansible.builtin.service_facts:
 
 - name: copy nginx renewal hook
-  copy:
+  ansible.builtin.copy:
     src: nginx
     dest: /etc/letsencrypt/renewal-hooks/post/
     mode: 0755
   when: "'nginx' in services"
 
 - name: remove nginx renewal hook
-  file:
+  ansible.builtin.file:
     path: /etc/letsencrypt/renewal-hooks/post/nginx
     state: absent
   when: "'nginx' not in services"
+
+- name: register certificates
+  ansible.builtin.include_tasks: register.yml
+  loop: "{{ certbot_domains }}"
