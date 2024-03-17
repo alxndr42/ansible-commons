@@ -12,7 +12,7 @@
   check_mode: false
   changed_when: false
 
-- include_tasks: install.yml
+- ansible.builtin.include_tasks: install.yml
   when: version.stdout != golang_version
 
 - name: template profile snippet

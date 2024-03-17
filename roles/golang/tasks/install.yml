@@ -1,29 +1,29 @@
 ---
 - name: remove folder
-  file:
+  ansible.builtin.file:
     path: "{{ golang_path }}"
     state: absent
 
 - name: create folder
-  file:
+  ansible.builtin.file:
     path: "{{ golang_path }}"
     state: directory
 
 - name: download release
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ golang_url }}"
     dest: /tmp/golang.tar.gz
     checksum: "{{ golang_checksum }}"
     mode: 0444
 
 - name: unarchive release
-  unarchive:
+  ansible.builtin.unarchive:
     src: /tmp/golang.tar.gz
     dest: "{{ golang_path }}"
     extra_opts: "--strip-components=1"
     remote_src: yes
 
 - name: remove archive
-  file:
+  ansible.builtin.file:
     path: /tmp/golang.tar.gz
     state: absent
