@@ -5,7 +5,13 @@
     cache_valid_time: 86400
 
 - name: install pyenv
-  include_tasks: install-pyenv.yml
+  ansible.builtin.include_tasks: install-pyenv.yml
   loop: "{{ pyenv_users }}"
   loop_control:
     loop_var: username
+
+- name: copy ensure-python
+  ansible.builtin.copy:
+    src: ensure-python
+    dest: /usr/local/bin/
+    mode: 0755

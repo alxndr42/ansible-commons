@@ -2,6 +2,8 @@
 
 Installs [pyenv][].
 
+Copies the [ensure-python](files/ensure-python) script to `/usr/local/bin`.
+
 [pyenv]: https://github.com/pyenv/pyenv
 
 ## Variables
