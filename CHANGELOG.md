@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.6.0
+
+- pyenv: Add ensure-python script
+- nginx: Update proxy header snippets
+- Update to Go v1.21.9
+- Update to pyenv v2.4.0
+
 ## 1.5.0
 
 - certbot: Add certbot_domains variable
