@@ -7,6 +7,7 @@ nginx_curves: "X25519:secp521r1:secp384r1"
 nginx_default_site: true
 nginx_error_log: "/var/log/nginx/error.log error"
 nginx_packages: [nginx]
+nginx_systemd_restart: true
 nginx_worker_connections: 1024
 nginx_worker_processes: auto
 acme_webroot: /var/www/acme-challenge

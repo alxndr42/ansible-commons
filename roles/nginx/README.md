@@ -5,6 +5,10 @@ Installs [nginx](https://nginx.org/docs/).
 The script [`nginx-site`](files/nginx-site) creates, enables and disables sites
 using the included [template](files/nginx/sites-available/template).
 
+The `default` site handles HTTP requests for `/.well-known/acme-challenge` by
+serving files from `acme_webroot`. All other HTTP URLs are redirected to their
+HTTPS counterparts.
+
 In the interest of user privacy, logging is disabled by default.
 
 ## Variables
@@ -18,6 +22,7 @@ In the interest of user privacy, logging is disabled by default.
 | `nginx_default_site` | Configure/remove the `default` site (with ACME webroot). |
 | `nginx_error_log` | `error_log` value for *nginx.conf*. |
 | `nginx_packages` | Packages to install. |
+| `nginx_systemd_restart` | `true` if the nginx service should be restarted on failure. |
 | `nginx_worker_connections` | `worker_connections` value for *nginx.conf*. |
 | `nginx_worker_processes` | `worker_processes` value for *nginx.conf*. |
 | `acme_webroot` | Path of the `webroot` directory. |
