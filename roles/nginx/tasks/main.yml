@@ -79,6 +79,7 @@
     mode: 0750
     owner: root
     group: www-data
+  register: webroot
 
 - name: copy restart.conf
   ansible.builtin.copy:
@@ -93,3 +94,7 @@
     state: absent
   when: not nginx_systemd_restart
   notify: reload systemd
+
+- name: flush handlers
+  ansible.builtin.meta: flush_handlers
+  when: webroot.changed
