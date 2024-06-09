@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.7.0
+
+- nginx: Add nginx_systemd_restart variable
+- nginx: Flush handlers for new webroot
+- Update to pyenv v2.4.2
+- Update to Go v1.22.4
+
 ## 1.6.0
 
 - pyenv: Add ensure-python script
