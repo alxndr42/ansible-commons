@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.8.0
+
+- Update to pyenv v2.4.8
+- Update to Go v1.22.5
+
 ## 1.7.0
 
 - nginx: Add nginx_systemd_restart variable
