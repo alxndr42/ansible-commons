@@ -1,6 +1,6 @@
 ---
 golang: true
-golang_version: go1.22.5 # https://go.dev/doc/devel/release
+golang_version: go1.22.8 # https://go.dev/doc/devel/release
 golang_url: https://go.dev/dl/{{ golang_version }}.linux-amd64.tar.gz
-golang_checksum: sha256:904b924d435eaea086515bc63235b192ea441bd8c9b198c507e85009e6e4c7f0
+golang_checksum: sha256:5f467d29fc67c7ae6468cb6ad5b047a274bae8180cac5e0b7ddbfeba3e47e18f
 golang_path: /usr/local/go
