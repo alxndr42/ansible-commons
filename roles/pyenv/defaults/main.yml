@@ -18,4 +18,4 @@ pyenv_packages: # https://github.com/pyenv/pyenv/wiki#suggested-build-environmen
   - zlib1g-dev
 pyenv_users: []
 pyenv_users_create: true
-pyenv_version: v2.4.19 # https://github.com/pyenv/pyenv/releases
+pyenv_version: v2.4.20 # https://github.com/pyenv/pyenv/releases
