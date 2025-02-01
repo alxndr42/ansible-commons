@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.10.0
+
+- Update to pyenv v2.5.1
+- Update to Go v1.23.5
+
 ## 1.9.0
 
 - Update to pyenv v2.4.19
