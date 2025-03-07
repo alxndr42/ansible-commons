@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.11.0
+
+- nginx: Add application/wasm to mime.types
+- Update to pyenv v2.5.3
+- Update to Go v1.23.7
+
 ## 1.10.0
 
 - Update to pyenv v2.5.1
