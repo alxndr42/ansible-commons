@@ -31,6 +31,13 @@
     dest: /etc/nginx/
   notify: reload nginx
 
+- name: check for application/wasm in mime.types
+  ansible.builtin.command: grep -c application/wasm /etc/nginx/mime.types
+  register: wasm
+  check_mode: false
+  changed_when: false
+  failed_when: false
+
 - name: add application/wasm to mime.types
   ansible.builtin.lineinfile:
     path: /etc/nginx/mime.types
@@ -38,6 +45,7 @@
     insertbefore: "application/x.*"
     firstmatch: yes
     backup: yes
+  when: wasm.stdout == "0"
   notify: reload nginx
 
 - name: template default site
