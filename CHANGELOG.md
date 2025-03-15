@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.11.1
+
+- nginx: Fix application/wasm update
+
 ## 1.11.0
 
 - nginx: Add application/wasm to mime.types
