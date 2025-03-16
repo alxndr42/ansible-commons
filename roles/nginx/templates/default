@@ -12,6 +12,9 @@ server {
     ssl_certificate_key /etc/ssl/default.key;
     ssl_stapling off;
 
+    access_log off;
+    error_log /dev/null;
+
     root /var/www/html;
     index index.html index.nginx-debian.html;
 }
@@ -27,9 +30,11 @@ server {
     listen [::]:80 default_server;
 {% endif %}
 
+    access_log off;
+    error_log /dev/null;
+
     location ^~ /.well-known/acme-challenge {
         root {{ acme_webroot }};
-        access_log off;
     }
 
     location / {
