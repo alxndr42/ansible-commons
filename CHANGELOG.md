@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.12.0
+
+- nginx: Disable all default site logging
+- nginx: Add header-csp-self.conf snippet
+- Update to Go v1.23.8
+
 ## 1.11.1
 
 - nginx: Fix application/wasm update
