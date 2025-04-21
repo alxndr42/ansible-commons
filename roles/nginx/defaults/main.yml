@@ -3,7 +3,7 @@ nginx: true
 nginx_access_log: "off"
 nginx_bad_user_agents: []
 nginx_ciphers: "ECDH+aRSA+CHACHA20:ECDH+aRSA+AESGCM"
-nginx_curves: "X25519:secp521r1:secp384r1"
+nginx_curves: "X25519:prime256v1:secp384r1"
 nginx_default_site: true
 nginx_error_log: "/var/log/nginx/error.log error"
 nginx_packages: [nginx]
