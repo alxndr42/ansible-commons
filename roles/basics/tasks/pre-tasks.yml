@@ -1,4 +1,9 @@
 ---
+- name: fail for deprecated variable
+  ansible.builtin.fail:
+    msg: Variable basics_autoupdate_blacklist has been renamed to basics_autoupdate_blocklist
+  when: basics_autoupdate_blacklist is defined
+
 - name: use ansible_lsb distribution
   set_fact:
     distribution: "{{ ansible_lsb.id }}"

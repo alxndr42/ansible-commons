@@ -10,7 +10,7 @@ non-security updates can optionally be allowed.
 
 | Variable | Description |
 | --- | --- |
-| `basics_autoupdate_blacklist` | List of packages that must not be automatically updated. |
+| `basics_autoupdate_blocklist` | List of packages that must not be automatically updated. |
 | `basics_autoupdate_mail` | Email address to send unattended upgrade errors to. |
 | `basics_autoupdate_non_security` | Install non-security updates provided by the distribution. |
 | `basics_autoupdate_origins` | List of additional `Origins-Pattern` values. |

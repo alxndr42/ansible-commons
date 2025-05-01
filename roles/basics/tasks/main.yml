@@ -6,5 +6,5 @@
 - include_tasks: data-retention.yml
 - include_tasks: secure-secure-shell.yml
 - include_tasks: unattended-upgrades.yml
-- include_tasks: user-sanity.yml
+- include_tasks: user-convenience.yml
 - include_tasks: post-tasks.yml
