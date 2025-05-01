@@ -103,14 +103,19 @@
     src: systemd/restart.conf
     dest: /etc/systemd/system/nginx.service.d/
   when: nginx_systemd_restart
-  notify: reload systemd
+  register: restart_copy
 
 - name: remove restart.conf
   ansible.builtin.file:
     path: /etc/systemd/system/nginx.service.d/restart.conf
     state: absent
   when: not nginx_systemd_restart
-  notify: reload systemd
+  register: restart_remove
+
+- name: reload systemd
+  ansible.builtin.systemd_service:
+    daemon_reload: yes
+  when: restart_copy.changed or restart_remove.changed
 
 - name: flush handlers
   ansible.builtin.meta: flush_handlers
