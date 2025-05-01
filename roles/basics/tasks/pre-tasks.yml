@@ -5,24 +5,24 @@
   when: basics_autoupdate_blacklist is defined
 
 - name: use ansible_lsb distribution
-  set_fact:
+  ansible.builtin.set_fact:
     distribution: "{{ ansible_lsb.id }}"
   when: ansible_lsb.id is defined
 
 - name: use ansible_facts distribution
-  set_fact:
+  ansible.builtin.set_fact:
     distribution: "{{ ansible_facts['distribution'] }}"
   when: ansible_lsb.id is not defined
 
 - name: show distribution
-  debug: var=distribution
+  ansible.builtin.debug: var=distribution
 
 - name: include OS-dependent variables
-  include_vars:
+  ansible.builtin.include_vars:
     file: os_{{ distribution }}.yml
 
 - name: install requirements for some Ansible operations
-  apt:
+  ansible.builtin.apt:
     name:
       - curl
       - git

@@ -2,26 +2,26 @@
 # https://stribika.github.io/2015/01/04/secure-secure-shell.html
 ---
 - name: check for ED25519 host key
-  stat: path=/etc/ssh/ssh_host_ed25519_key
+  ansible.builtin.stat: path=/etc/ssh/ssh_host_ed25519_key
   register: f
-- fail: msg="No ED25519 host key found"
+- ansible.builtin.fail: msg="No ED25519 host key found"
   when: not f.stat.exists
 
 - name: check for RSA host key
-  stat: path=/etc/ssh/ssh_host_rsa_key
+  ansible.builtin.stat: path=/etc/ssh/ssh_host_rsa_key
   register: f
-- fail: msg="No RSA host key found"
+- ansible.builtin.fail: msg="No RSA host key found"
   when: not f.stat.exists
 
 - name: template sshd_config
-  template:
+  ansible.builtin.template:
     src: sshd_config
     dest: /etc/ssh/
     backup: yes
   register: sshd_config
 
 - name: reload sshd immediately
-  service:
+  ansible.builtin.service:
     name: ssh
     state: reloaded
   when: sshd_config.changed

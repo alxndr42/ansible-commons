@@ -1,17 +1,17 @@
 ---
 - name: install UFW
-  apt:
+  ansible.builtin.apt:
     name: ufw
 
 - name: allow SSH
-  ufw:
+  ansible.builtin.ufw:
     rule: allow
     port: "22"
     proto: tcp
   when: basics_ufw_ssh
 
 - name: deny rules
-  ufw:
+  ansible.builtin.ufw:
     rule: deny
     from_ip: "{{ item.src|default('any') }}"
     from_port: "{{ item.src_port|default(omit) }}"
@@ -23,7 +23,7 @@
   with_items: "{{ basics_ufw_deny }}"
 
 - name: allow rules
-  ufw:
+  ansible.builtin.ufw:
     rule: allow
     from_ip: "{{ item.src|default('any') }}"
     from_port: "{{ item.src_port|default(omit) }}"
@@ -35,5 +35,5 @@
   with_items: "{{ basics_ufw_allow }}"
 
 - name: enable UFW
-  ufw:
+  ansible.builtin.ufw:
     state: enabled

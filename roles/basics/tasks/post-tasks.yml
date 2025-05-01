@@ -1,24 +1,24 @@
 ---
 - name: disable selected services
-  service:
+  ansible.builtin.service:
     name: "{{ item }}"
     state: stopped
     enabled: no
   with_items: "{{ basics_services_disable }}"
 
 - name: remove selected packages
-  apt:
+  ansible.builtin.apt:
     name: "{{ basics_packages_remove }}"
     state: absent
     autoremove: yes
     purge: yes
 
 - name: install selected packages
-  apt:
+  ansible.builtin.apt:
     name: "{{ basics_packages_install }}"
 
 - name: install CPU microcode updates
-  apt:
+  ansible.builtin.apt:
     name: "{{ item.package }}"
   when:
     - basics_microcode_updates | bool

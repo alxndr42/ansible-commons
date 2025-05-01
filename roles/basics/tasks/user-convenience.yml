@@ -1,12 +1,12 @@
 ---
 - name: remove vim-tiny
-  apt:
+  ansible.builtin.apt:
     name: vim-tiny
     state: absent
     purge: yes
 
 - name: install user-friendly packages
-  apt:
+  ansible.builtin.apt:
     name:
       - htop
       - less
@@ -16,11 +16,11 @@
       - wget
 
 - name: check for /etc/screenrc
-  stat: path=/etc/screenrc
+  ansible.builtin.stat: path=/etc/screenrc
   register: f
 
 - name: disable screen startup message
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/screenrc
     regexp: '^#(startup_message off)$'
     line: '\1'

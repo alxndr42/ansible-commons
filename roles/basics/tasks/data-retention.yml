@@ -1,35 +1,35 @@
 ---
 - name: create journald.conf.d
-  file:
+  ansible.builtin.file:
     path: /etc/systemd/journald.conf.d
     state: directory
 
 - name: template journald.conf override
-  template:
+  ansible.builtin.template:
     src: 99-retention.conf
     dest: /etc/systemd/journald.conf.d/
   register: retention
 
 - name: restart journald
-  systemd:
+  ansible.builtin.systemd_service:
     name: systemd-journald
     state: restarted
   when: retention.changed
 
 - name: copy 99-history-files.sh
-  copy:
+  ansible.builtin.copy:
     src: 99-history-files.sh
     dest: /etc/profile.d/
   when: basics_history_disabled
 
 - name: delete 99-history-files.sh
-  file:
+  ansible.builtin.file:
     path: /etc/profile.d/99-history-files.sh
     state: absent
   when: not basics_history_disabled
 
 - name: delete history files
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: absent
   with_items:
