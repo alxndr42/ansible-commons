@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.13.0
+
+- nginx: Remove OCSP stapling
+- nginx: Update ssl_ecdh_curve default
+- Update to pyenv v2.5.5
+
 ## 1.12.0
 
 - nginx: Disable all default site logging
