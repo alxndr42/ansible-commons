@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.13.1
+
+- nginx: Fix systemd reload
+
 ## 1.13.0
 
 - nginx: Remove OCSP stapling
