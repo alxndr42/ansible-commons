@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.14.0
+
+- Update to pyenv v2.5.7
+- Update to Go v1.23.9
+- basics: Update unattended-upgrades template
+
 ## 1.13.1
 
 - nginx: Fix systemd reload
