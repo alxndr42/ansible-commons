@@ -21,7 +21,3 @@ basics_ssh_listen: []
 basics_ssh_match_blocks: []
 basics_ssh_port: 22
 basics_ssh_root_login: "no"
-basics_ufw: false
-basics_ufw_allow: []
-basics_ufw_deny: []
-basics_ufw_ssh: true

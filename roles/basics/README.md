@@ -31,10 +31,6 @@ non-security updates can optionally be allowed.
 | `basics_ssh_match_blocks` | List of `Match` blocks for *sshd_config* (see below). |
 | `basics_ssh_port` | `Port` value for *sshd_config*. |
 | `basics_ssh_root_login` | `PermitRootLogin` value for *sshd_config*. |
-| `basics_ufw_allow` | List of UFW `allow` rules (see below). |
-| `basics_ufw_deny` | List of UFW `deny` rules (see below). |
-| `basics_ufw_ssh` | Allow SSH as the first UFW rule. |
-| `basics_ufw` | Configure and enable UFW. |
 
 Please see [defaults/main.yml](defaults/main.yml) for default values.
 
@@ -54,23 +50,4 @@ Resulting entry in *sshd_config*:
 ```
 Match User sftpuser
   ForceCommand internal-sftp
-```
-
-## UFW Rules
-
-Example:
-
-```yaml
-basics_ufw_allow:
-  - port: "80,443"
-    proto: tcp
-
-basics_ufw_deny:
-  - src: "192.168.0.42"
-    src_port: 1234
-    dst: "192.168.0.1"
-    port: 53
-    proto: udp
-    interface: eth0
-    direction: in
 ```

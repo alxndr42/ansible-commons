@@ -1,8 +1,5 @@
 ---
 - ansible.builtin.include_tasks: pre-tasks.yml
-- ansible.builtin.include_tasks: ufw.yml
-  tags: ufw
-  when: basics_ufw
 - ansible.builtin.include_tasks: data-retention.yml
 - ansible.builtin.include_tasks: secure-secure-shell.yml
 - ansible.builtin.include_tasks: unattended-upgrades.yml
