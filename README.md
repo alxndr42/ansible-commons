@@ -36,36 +36,6 @@ Installs [nginx](https://nginx.org/docs/).
 
 Please see [roles/nginx/README.md](roles/nginx/README.md) for details.
 
-## nodejs
-
-Installs [NodeJS](https://nodejs.org/).
-
-Required variables:
-
-| Variable | Description |
-| --- | --- |
-| `nodejs_version` | NodeJS [repository](https://github.com/nodesource/distributions#installation-instructions) version. |
-
-Please see [roles/nodejs/README.md](roles/nodejs/README.md) for details.
-
-## php
-
-Installs [PHP](https://www.php.net/) with FPM.
-
-Required variables:
-
-| Variable | Description |
-| --- | --- |
-| `php_version` | PHP package version. |
-
-Please see [roles/php/README.md](roles/php/README.md) for details.
-
-## pyenv
-
-Installs [pyenv](https://github.com/pyenv/pyenv).
-
-Please see [roles/pyenv/README.md](roles/pyenv/README.md) for details.
-
 ## License
 
 GNU General Public License v3 or later (GPLv3+)

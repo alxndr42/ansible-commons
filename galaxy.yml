@@ -10,9 +10,6 @@ tags:
   - debian
   - golang
   - nginx
-  - nodejs
-  - php
-  - python
   - ubuntu
 repository: https://codeberg.org/alxndr42/ansible-commons
 build_ignore:
