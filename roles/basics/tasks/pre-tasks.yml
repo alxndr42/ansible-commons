@@ -16,6 +16,11 @@
   ansible.builtin.include_vars:
     file: os_{{ distribution }}.yml
 
+- name: configure hostname
+  ansible.builtin.hostname:
+    name: "{{ basics_hostname }}"
+  when: basics_hostname is defined
+
 - name: install requirements for some Ansible operations
   ansible.builtin.apt:
     name:

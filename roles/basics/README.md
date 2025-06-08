@@ -19,6 +19,7 @@ non-security updates can optionally be allowed.
 | `basics_autoupdate_update_delay` | `RandomizedDelaySec` value for *apt-daily.timer*. |
 | `basics_autoupdate_upgrade_calendar` | `OnCalendar` value for *apt-daily-upgrade.timer*. |
 | `basics_autoupdate_upgrade_delay` | `RandomizedDelaySec` value for *apt-daily-upgrade.timer*. |
+| `basics_hostname` | System hostname. |
 | `basics_history_disabled` | Disable persistent history in Bash etc. |
 | `basics_journald_maxfile` | *journald.conf* `MaxFileSec` override. |
 | `basics_journald_maxretention` | *journald.conf* `MaxRetentionSec` override. |
