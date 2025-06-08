@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0
+
+- basics: Add basics_hostname variable
+- basics: Remove ufw support
+- Remove roles: nodejs, php, pyenv
+
 ## 1.14.0
 
 - Update to pyenv v2.5.7
