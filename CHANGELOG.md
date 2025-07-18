@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.0
+
+- certbot: Add optional variables
+- nginx: Update nginx_ciphers default
+- Update to Go v1.24.5
+
 ## 2.0.0
 
 - basics: Add basics_hostname variable
